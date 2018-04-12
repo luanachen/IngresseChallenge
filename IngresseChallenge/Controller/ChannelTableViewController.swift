@@ -11,19 +11,29 @@ import AlamofireImage
 
 class ChannelTableViewController: UITableViewController {
 
-    // MARK: Properties
+    // MARK: - Properties
     var channelsArray = [Channel]()
 
+    // MARK: - Outlets
+    @IBOutlet var searchBar: UISearchBar!
+
+    // MARK: - View Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "ChannelCell", bundle: nil), forCellReuseIdentifier: "customCell")
 
+        loadChannels()
+
+        searchBar.delegate = self
+    }
+
+    // MARK: - Methods
+    func loadChannels() {
         GetAPIData().fetchChannels { (channels) in
             self.channelsArray = channels
             self.tableView.reloadData()
         }
-
     }
 
 
@@ -62,4 +72,27 @@ class ChannelTableViewController: UITableViewController {
     }
 
 }
+extension ChannelTableViewController: UISearchBarDelegate {
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+        guard !searchText.isEmpty else {
+            loadChannels()
+            tableView.reloadData()
+            return
+        }
+        channelsArray = channelsArray.filter({ (channel) -> Bool in
+            guard let text = searchBar.text else { return false }
+            return channel.name.lowercased().contains(text.lowercased())
+        })
+        tableView.reloadData()
+    }
+
+}
+
+
 
