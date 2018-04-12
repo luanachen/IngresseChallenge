@@ -12,9 +12,9 @@ import Alamofire
 class GetAPIData {
     
 
-    func fetchChannels(completionHandler: @escaping ([Channel]) -> ()) {
+    func fetchChannels(completionHandler: @escaping ([Show]) -> ()) {
         
-        var channelsArray = [Channel]()
+        var channelsArray = [Show]()
 
         let url = URL(string: "http://api.tvmaze.com/shows")
         
@@ -35,13 +35,13 @@ class GetAPIData {
         }
     }
     
-    func updateResult(_ data: Data?) -> [Channel]{
-        var channelsArray = [Channel]()
+    func updateResult(_ data: Data?) -> [Show]{
+        var channelsArray = [Show]()
 
         do {
             let decoder = JSONDecoder()
             if let data = data {
-                channelsArray = try decoder.decode([Channel].self, from: data)
+                channelsArray = try decoder.decode([Show].self, from: data)
             } else { print("no data retrieved") }
         } catch {
             print("Error while parsing json: \(error)")
@@ -49,16 +49,5 @@ class GetAPIData {
         
         return channelsArray
     }
-    
-    //    func getShopImage(photoReference: Photo, completionHandler: (UIImage) -> ()) {
-    //        let image = UIImage()
-    //        let imageURL = URL(string: "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=\(String(describing: photoReference))&key=\(AppDelegate.GOOGLE_PLACES_KEY)")
-    //
-    //        Alamofire.request(imageURL!).responseData { (response) in
-    //
-    //            guard UIImage(data: response.data!) != nil else {return}
-    //        }
-    //        completionHandler(image)
-    //    }
 
 }

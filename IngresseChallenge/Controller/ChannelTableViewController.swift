@@ -12,7 +12,7 @@ import AlamofireImage
 class ChannelTableViewController: UITableViewController {
 
     // MARK: - Properties
-    var channelsArray = [Channel]()
+    var channelsArray = [Show]()
 
     // MARK: - Outlets
     @IBOutlet var searchBar: UISearchBar!
@@ -49,9 +49,10 @@ class ChannelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! ChannelCell
+        
         cell.titleLabel.text = channelsArray[indexPath.row].name
 
-        let genres = channelsArray[indexPath.row].genres.compactMap{$0.rawValue}.joined(separator: ", ")
+        let genres = channelsArray[indexPath.row].genres.compactMap{$0}.joined(separator: ", ")
         cell.genreLabel.text = genres
 
         let imageURL = URL(string: channelsArray[indexPath.row].image.medium)

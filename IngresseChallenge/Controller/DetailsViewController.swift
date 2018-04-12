@@ -10,7 +10,7 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    var selectedChannel: Channel?
+    var selectedChannel: Show?
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,10 +24,12 @@ class DetailsViewController: UIViewController {
 
         self.title = selectedChannel?.name
         self.titleLabel.text = selectedChannel?.name
-        self.genreLabel.text =  selectedChannel?.genres.compactMap{$0.rawValue}.joined(separator: ", ")
+        self.genreLabel.text =  selectedChannel?.genres.compactMap{$0}.joined(separator: ", ")
+        self.releaseDayLabel.text = selectedChannel?.premiered
+
         let synopsis = selectedChannel?.summary
         self.synopsisTextField.text = synopsis?.removeHtmlFromString(inPutString: synopsis!)
-        self.releaseDayLabel.text = selectedChannel?.premiered
+
         let imageURL = URL(string: (selectedChannel?.image.original)!)
         self.imageView.af_setImage(withURL: imageURL!)
     }
@@ -37,7 +39,6 @@ class DetailsViewController: UIViewController {
 extension String{
 
     func removeHtmlFromString(inPutString: String) -> String{
-
         return inPutString.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
 }
