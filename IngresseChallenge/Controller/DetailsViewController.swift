@@ -25,11 +25,20 @@ class DetailsViewController: UIViewController {
         self.title = selectedChannel?.name
         self.titleLabel.text = selectedChannel?.name
         self.genreLabel.text =  selectedChannel?.genres.compactMap{$0.rawValue}.joined(separator: ", ")
-        self.synopsisTextField.text = selectedChannel?.summary
+        let synopsis = selectedChannel?.summary
+        self.synopsisTextField.text = synopsis?.removeHtmlFromString(inPutString: synopsis!)
         self.releaseDayLabel.text = selectedChannel?.premiered
         let imageURL = URL(string: (selectedChannel?.image.original)!)
         self.imageView.af_setImage(withURL: imageURL!)
 
     }
 
+}
+// MARK: Extension - String
+extension String{
+
+    func removeHtmlFromString(inPutString: String) -> String{
+
+        return inPutString.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
 }
