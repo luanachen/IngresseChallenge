@@ -17,7 +17,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var synopsisTextField: UITextView!
     @IBOutlet weak var releaseDayLabel: UILabel!
-
+    @IBOutlet weak var favoriteButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +30,6 @@ class DetailsViewController: UIViewController {
         self.releaseDayLabel.text = selectedChannel?.premiered
         let imageURL = URL(string: (selectedChannel?.image.original)!)
         self.imageView.af_setImage(withURL: imageURL!)
-
     }
 
 }

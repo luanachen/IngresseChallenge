@@ -21,42 +21,56 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game of Thrones" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cze-aG-vtQ">
-                        <rect key="frame" x="16" y="11" width="190" height="62"/>
+                        <rect key="frame" x="16" y="11" width="190" height="32"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="190" id="o5p-KI-W5p"/>
+                            <constraint firstAttribute="width" constant="190" id="XgE-pb-lNA"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fantasy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i42-oi-3g3">
-                        <rect key="frame" x="16" y="81" width="190" height="29"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="29" id="fr9-hN-yHg"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2eC-vj-5Ab">
                         <rect key="frame" x="221" y="11" width="88" height="99"/>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8y5-kF-ufI">
+                        <rect key="frame" x="16" y="83" width="33" height="27"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="QBQ-Z0-sKz"/>
+                            <constraint firstAttribute="width" constant="33" id="bS8-19-Swt"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="empty_star.png"/>
+                        <connections>
+                            <action selector="favoriteButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fxS-j1-fGE"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fantasy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i42-oi-3g3">
+                        <rect key="frame" x="16" y="51" width="190" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="29" id="01J-KG-hFk"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="2eC-vj-5Ab" firstAttribute="bottom" secondItem="i42-oi-3g3" secondAttribute="bottom" id="2p9-DG-U9j"/>
-                    <constraint firstItem="2eC-vj-5Ab" firstAttribute="top" secondItem="Cze-aG-vtQ" secondAttribute="top" id="8NG-OT-xcY"/>
-                    <constraint firstItem="i42-oi-3g3" firstAttribute="top" secondItem="Cze-aG-vtQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Bxm-4R-Zfi"/>
-                    <constraint firstItem="Cze-aG-vtQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Ri3-zW-olT"/>
-                    <constraint firstItem="2eC-vj-5Ab" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="c8o-EL-Pxe"/>
-                    <constraint firstItem="Cze-aG-vtQ" firstAttribute="leading" secondItem="i42-oi-3g3" secondAttribute="leading" id="eI6-8q-tTw"/>
-                    <constraint firstItem="Cze-aG-vtQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="iyp-AH-QA8"/>
-                    <constraint firstItem="Cze-aG-vtQ" firstAttribute="trailing" secondItem="i42-oi-3g3" secondAttribute="trailing" id="kLX-s0-qww"/>
-                    <constraint firstItem="i42-oi-3g3" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="lnU-Hd-xdc"/>
-                    <constraint firstItem="2eC-vj-5Ab" firstAttribute="leading" secondItem="Cze-aG-vtQ" secondAttribute="trailing" constant="15" id="ogB-Dd-aB3"/>
+                    <constraint firstItem="Cze-aG-vtQ" firstAttribute="leading" secondItem="i42-oi-3g3" secondAttribute="leading" id="3B0-yk-PRE"/>
+                    <constraint firstItem="8y5-kF-ufI" firstAttribute="top" secondItem="i42-oi-3g3" secondAttribute="bottom" constant="3" id="3iJ-bl-9Dv"/>
+                    <constraint firstItem="i42-oi-3g3" firstAttribute="leading" secondItem="8y5-kF-ufI" secondAttribute="leading" id="H9c-h4-eGQ"/>
+                    <constraint firstItem="2eC-vj-5Ab" firstAttribute="leading" secondItem="Cze-aG-vtQ" secondAttribute="trailing" constant="15" id="Ln9-LQ-sc5"/>
+                    <constraint firstItem="i42-oi-3g3" firstAttribute="top" secondItem="Cze-aG-vtQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Omc-Xg-1N8"/>
+                    <constraint firstItem="Cze-aG-vtQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="S2Q-CO-swn"/>
+                    <constraint firstItem="2eC-vj-5Ab" firstAttribute="top" secondItem="Cze-aG-vtQ" secondAttribute="top" id="S9U-oJ-57Y"/>
+                    <constraint firstItem="Cze-aG-vtQ" firstAttribute="trailing" secondItem="i42-oi-3g3" secondAttribute="trailing" id="TUa-F7-XNO"/>
+                    <constraint firstItem="8y5-kF-ufI" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="W1X-CV-yBX"/>
+                    <constraint firstItem="2eC-vj-5Ab" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="YUX-g0-HVX"/>
+                    <constraint firstItem="Cze-aG-vtQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Yqn-Rd-SVQ"/>
+                    <constraint firstItem="2eC-vj-5Ab" firstAttribute="bottom" secondItem="8y5-kF-ufI" secondAttribute="bottom" id="w9W-ZT-SEh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="favoriteButton" destination="8y5-kF-ufI" id="upL-6u-aYV"/>
                 <outlet property="genreLabel" destination="i42-oi-3g3" id="aT4-fI-exE"/>
                 <outlet property="posterImage" destination="2eC-vj-5Ab" id="jzx-EY-ogp"/>
                 <outlet property="titleLabel" destination="Cze-aG-vtQ" id="Ot6-Fu-RMw"/>
@@ -64,4 +78,7 @@
             <point key="canvasLocation" x="31.5" y="92.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="empty_star.png" width="512" height="512"/>
+    </resources>
 </document>

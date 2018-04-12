@@ -13,7 +13,6 @@ class ChannelTableViewController: UITableViewController {
 
     // MARK: Properties
     var channelsArray = [Channel]()
-//    var imagesArray = [Image]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,12 +37,16 @@ class ChannelTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! ChannelCell
         cell.titleLabel.text = channelsArray[indexPath.row].name
+
         let genres = channelsArray[indexPath.row].genres.compactMap{$0.rawValue}.joined(separator: ", ")
         cell.genreLabel.text = genres
+
         let imageURL = URL(string: channelsArray[indexPath.row].image.medium)
         cell.posterImage.af_setImage(withURL: imageURL!)
+        
         return cell
     }
 
