@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="chW-xx-5fJ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Channels-->
+        <scene sceneID="QZS-2a-JGb">
+            <objects>
+                <tableViewController id="kh4-ph-uqW" customClass="ChannelTableViewController" customModule="IngresseChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="q9D-2R-vAY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="zum-ub-EVm">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zum-ub-EVm" id="1sl-7J-NRP">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kh4-ph-uqW" id="Lfh-XD-0fV"/>
+                            <outlet property="delegate" destination="kh4-ph-uqW" id="Kac-Qq-Lrc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Channels" id="ZB4-2u-csy">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Cmd-YT-H9Q"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="5K9-4g-2V6" kind="show" identifier="showDetailSegue" id="95J-Mo-eFC"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9HJ-zI-Zjo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16" y="-82"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="oy4-et-nDD">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" id="5K9-4g-2V6" customClass="DetailsViewController" customModule="IngresseChallenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AOD-Go-NyL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9DD-AI-i9e">
+                                <rect key="frame" x="16" y="83" width="343" height="246"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1d-fP-4NQ">
+                                <rect key="frame" x="16" y="448" width="343" height="199"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="199" id="p39-tm-m5h"/>
+                                </constraints>
+                                <string key="text">Há muito tempo, em um tempo esquecido, uma força destruiu o equilíbrio das estações. Em uma terra onde os verões podem durar vários anos e o inverno toda uma vida, as reivindicações e as forças sobrenaturais correm as portas do Reino dos Sete Reinos. A irmandade da Patrulha da Noite busca proteger o reino de cada criatura que pode vir de lá da Muralha, mas já não tem os recursos necessários para garantir a segurança de todos. Depois de um verão de dez anos, um inverno rigoroso promete chegar com um futuro mais sombrio. Enquanto isso, conspirações e rivalidades correm no jogo político pela disputa do Trono de Ferro, o símbolo do poder absoluto.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fantasy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5L-wi-Had">
+                                <rect key="frame" x="16" y="405" width="343" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ohb-Nb-hfU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09/02/2010" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc0-dx-Yfx">
+                                <rect key="frame" x="266" y="347" width="93" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="93" id="13d-6l-6uD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game of Thrones" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uel-ym-ckj">
+                                <rect key="frame" x="16" y="347" width="230" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="yLK-Ik-aIs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Y5L-wi-Had" firstAttribute="leading" secondItem="F1d-fP-4NQ" secondAttribute="leading" id="0qQ-VK-9G3"/>
+                            <constraint firstItem="F1d-fP-4NQ" firstAttribute="top" secondItem="Y5L-wi-Had" secondAttribute="bottom" constant="8" symbolic="YES" id="2um-H3-6Mu"/>
+                            <constraint firstItem="Qc0-dx-Yfx" firstAttribute="trailing" secondItem="Y5L-wi-Had" secondAttribute="trailing" id="7DC-cK-PQ0"/>
+                            <constraint firstItem="9DD-AI-i9e" firstAttribute="top" secondItem="ZAf-8U-JRV" secondAttribute="top" constant="19" id="E4e-yc-3wu"/>
+                            <constraint firstItem="Uel-ym-ckj" firstAttribute="firstBaseline" secondItem="Qc0-dx-Yfx" secondAttribute="firstBaseline" id="EZT-Sg-wnk"/>
+                            <constraint firstAttribute="bottom" secondItem="F1d-fP-4NQ" secondAttribute="bottom" constant="20" symbolic="YES" id="K95-bK-QfJ"/>
+                            <constraint firstItem="Uel-ym-ckj" firstAttribute="leading" secondItem="Y5L-wi-Had" secondAttribute="leading" id="PVo-77-uoZ"/>
+                            <constraint firstItem="Y5L-wi-Had" firstAttribute="top" secondItem="Uel-ym-ckj" secondAttribute="bottom" constant="8" symbolic="YES" id="RM7-sd-Pa8"/>
+                            <constraint firstItem="Qc0-dx-Yfx" firstAttribute="leading" secondItem="Uel-ym-ckj" secondAttribute="trailing" constant="20" id="Yht-Uw-zRj"/>
+                            <constraint firstItem="Y5L-wi-Had" firstAttribute="leading" secondItem="AOD-Go-NyL" secondAttribute="leadingMargin" id="ahb-xy-iVW"/>
+                            <constraint firstItem="Uel-ym-ckj" firstAttribute="baseline" secondItem="Qc0-dx-Yfx" secondAttribute="baseline" id="nN2-Ik-GTL"/>
+                            <constraint firstItem="Uel-ym-ckj" firstAttribute="top" secondItem="9DD-AI-i9e" secondAttribute="bottom" constant="18" id="tIs-Bc-Eej"/>
+                            <constraint firstItem="Y5L-wi-Had" firstAttribute="trailing" secondItem="F1d-fP-4NQ" secondAttribute="trailing" id="uOm-Em-bjt"/>
+                            <constraint firstItem="9DD-AI-i9e" firstAttribute="leading" secondItem="Uel-ym-ckj" secondAttribute="leading" id="vhu-9G-vUU"/>
+                            <constraint firstItem="Y5L-wi-Had" firstAttribute="trailing" secondItem="AOD-Go-NyL" secondAttribute="trailingMargin" id="y4C-Yf-xOz"/>
+                            <constraint firstItem="9DD-AI-i9e" firstAttribute="trailing" secondItem="Qc0-dx-Yfx" secondAttribute="trailing" id="zkV-Sb-cq6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZAf-8U-JRV"/>
+                    </view>
+                    <connections>
+                        <outlet property="genreLabel" destination="Y5L-wi-Had" id="9D8-wf-MJQ"/>
+                        <outlet property="imageView" destination="9DD-AI-i9e" id="ejO-6m-DI9"/>
+                        <outlet property="releaseDayLabel" destination="Qc0-dx-Yfx" id="vq1-xN-jbZ"/>
+                        <outlet property="synopsisTextField" destination="F1d-fP-4NQ" id="oGN-q6-CUv"/>
+                        <outlet property="titleLabel" destination="Uel-ym-ckj" id="ink-0x-wvp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a9e-9j-hrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985.5" y="-82.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CYk-T7-5PT">
+            <objects>
+                <navigationController id="chW-xx-5fJ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0Ad-XW-Fql">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="kh4-ph-uqW" kind="relationship" relationship="rootViewController" id="iXZ-F2-Snf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BAY-Zy-0je" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-935" y="-82"/>
+        </scene>
+    </scenes>
+</document>
