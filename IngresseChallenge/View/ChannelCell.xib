@@ -40,7 +40,7 @@
                         </constraints>
                         <state key="normal" title="Button" image="empty_star"/>
                         <connections>
-                            <action selector="favoriteButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fxS-j1-fGE"/>
+                            <action selector="favoriteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pN3-aR-tiw"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i42-oi-3g3">
@@ -70,7 +70,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="favoriteButton" destination="8y5-kF-ufI" id="upL-6u-aYV"/>
+                <outlet property="favoriteButton" destination="8y5-kF-ufI" id="pt4-Xv-ROg"/>
                 <outlet property="genreLabel" destination="i42-oi-3g3" id="aT4-fI-exE"/>
                 <outlet property="posterImage" destination="2eC-vj-5Ab" id="jzx-EY-ogp"/>
                 <outlet property="titleLabel" destination="Cze-aG-vtQ" id="Ot6-Fu-RMw"/>

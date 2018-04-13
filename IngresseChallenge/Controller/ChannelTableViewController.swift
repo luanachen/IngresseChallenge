@@ -12,7 +12,7 @@ import AlamofireImage
 class ChannelTableViewController: UITableViewController {
 
     // MARK: - Properties
-    var channelsArray = [Show]()
+    var channelsArray: [Show]?
 
     // MARK: - Outlets
     @IBOutlet var searchBar: UISearchBar!
@@ -32,48 +32,48 @@ class ChannelTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if (searchBar.text?.isEmpty)! {
-            channelsArray = []
-            return 1
-        }
-        return channelsArray.count
+        return self.channelsArray?.count ?? 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? ChannelCell else { return UITableViewCell() }
 
-        if (searchBar.text?.isEmpty)! {
-            cell.titleLabel.text = ""
-            cell.genreLabel.text = "Looking for something? :)"
-            cell.posterImage.isHidden = true
-            cell.favoriteButton.isHidden = true
-            tableView.allowsSelection = false
+        if let channel = channelsArray?[indexPath.row] {
+
+            cell.titleLabel.text = channel.name
+
+            let genres = channel.genres?.compactMap{$0}.joined(separator: ", ")
+            cell.genreLabel.text = genres
+
+            if let imageString = channel.image?.original {
+                if let imageURL = URL(string: imageString) {
+                    cell.posterImage.af_setImage(withURL: imageURL)
+                } else {
+                    cell.posterImage.image = #imageLiteral(resourceName: "movie_placeholder.png")
+                }
+            }
+            cell.posterImage.isHidden = false
+
+            cell.favoriteButton.isHidden = false
+
+            let id = channel.id
+            cell.favoriteButton.setImage(Favorite().recoverFavorite().contains(id) ? #imageLiteral(resourceName: "filled_star.png") : #imageLiteral(resourceName: "empty_star.png"), for: .normal)
+
             return cell
         }
-        
-        cell.titleLabel.text = channelsArray[indexPath.row].name
-
-        let genres = channelsArray[indexPath.row].genres.compactMap{$0}.joined(separator: ", ")
-        cell.genreLabel.text = genres
-
-        let imageURL = URL(string: channelsArray[indexPath.row].image.medium)
-        cell.posterImage.isHidden = false
-        cell.posterImage.af_setImage(withURL: imageURL!)
-
-        cell.favoriteButton.isHidden = false
-
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        destinationVC.selectedChannel = self.channelsArray[indexPath.row]
+        guard let channels = self.channelsArray?[indexPath.row] else { return }
+        destinationVC.selectedChannel = channels
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
 
@@ -82,14 +82,24 @@ extension ChannelTableViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
-        GetAPIData().fetchChannels(by: searchText) { (channels) in
-            self.channelsArray = channels.compactMap { $0.show }
+        guard !searchText.isEmpty else {
+            channelsArray?.removeAll()
+            tableView.reloadData()
+            return
         }
-        tableView.allowsSelection = true
-        tableView.reloadData()
     }
 
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+
+        if let text = searchBar.text {
+            let text = text.replacingOccurrences(of: " ", with: "+")
+            GetAPIData().fetchChannels(by: text) { (channels) in
+                self.channelsArray = channels.compactMap { $0.show }
+            }
+            tableView.allowsSelection = true
+            tableView.reloadData()
+        }
+    }
+
+
 }
-
-
-

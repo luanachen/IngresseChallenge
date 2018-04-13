@@ -24,14 +24,24 @@ class DetailsViewController: UIViewController {
 
         self.title = selectedChannel?.name
         self.titleLabel.text = selectedChannel?.name
-        self.genreLabel.text =  selectedChannel?.genres.compactMap{$0}.joined(separator: ", ")
+        self.genreLabel.text =  selectedChannel?.genres?.compactMap{$0}.joined(separator: ", ")
         self.releaseDayLabel.text = selectedChannel?.premiered
 
         let synopsis = selectedChannel?.summary
         self.synopsisTextField.text = synopsis?.removeHtmlFromString(inPutString: synopsis!)
 
-        let imageURL = URL(string: (selectedChannel?.image.original)!)
-        self.imageView.af_setImage(withURL: imageURL!)
+
+        if let imageString = selectedChannel?.image?.original {
+            if let imageURL = URL(string: imageString) {
+                imageView.af_setImage(withURL: imageURL)
+            }
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        if self.isMovingToParentViewController {
+            selectedChannel = nil
+        }
     }
 
 }

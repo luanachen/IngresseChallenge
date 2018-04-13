@@ -19,10 +19,10 @@ struct ChannelElement: Codable {
 struct Show: Codable {
     let id: Int
     let name: String
-    let genres: [String]
-    let premiered: String
-    let image: Image
-    let summary: String
+    let genres: [String]?
+    let premiered: String?
+    let image: Image?
+    let summary: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name, genres, premiered, image, summary

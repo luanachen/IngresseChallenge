@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 
 class GetAPIData {
-    
 
     func fetchChannels(by name: String, completionHandler: @escaping (Channel) -> ()) {
         
