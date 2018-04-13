@@ -23,19 +23,8 @@ class ChannelTableViewController: UITableViewController {
 
         tableView.register(UINib(nibName: "ChannelCell", bundle: nil), forCellReuseIdentifier: "customCell")
 
-        loadChannels()
-
         searchBar.delegate = self
     }
-
-    // MARK: - Methods
-    func loadChannels() {
-        GetAPIData().fetchChannels { (channels) in
-            self.channelsArray = channels
-            self.tableView.reloadData()
-        }
-    }
-
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,12 +32,21 @@ class ChannelTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if (searchBar.text?.isEmpty)! {
+            return 1
+        }
         return channelsArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! ChannelCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? ChannelCell else { return UITableViewCell() }
+
+        if (searchBar.text?.isEmpty)! {
+            cell.genreLabel.text = "Looking for something? :)"
+            tableView.allowsSelection = false
+            return cell
+        }
         
         cell.titleLabel.text = channelsArray[indexPath.row].name
 
@@ -75,21 +73,12 @@ class ChannelTableViewController: UITableViewController {
 }
 extension ChannelTableViewController: UISearchBarDelegate {
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-
-    }
-
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
-        guard !searchText.isEmpty else {
-            loadChannels()
-            tableView.reloadData()
-            return
+        GetAPIData().fetchChannels(by: searchText) { (channels) in
+            self.channelsArray = channels.compactMap { $0.show }
         }
-        channelsArray = channelsArray.filter({ (channel) -> Bool in
-            guard let text = searchBar.text else { return false }
-            return channel.name.lowercased().contains(text.lowercased())
-        })
+        tableView.allowsSelection = true
         tableView.reloadData()
     }
 

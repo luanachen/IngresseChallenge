@@ -12,11 +12,11 @@ import Alamofire
 class GetAPIData {
     
 
-    func fetchChannels(completionHandler: @escaping ([Show]) -> ()) {
+    func fetchChannels(by name: String, completionHandler: @escaping (Channel) -> ()) {
         
-        var channelsArray = [Show]()
+        var channelsArray = Channel()
 
-        let url = URL(string: "http://api.tvmaze.com/shows")
+        let url = URL(string: "http://api.tvmaze.com/search/shows?q=\(name)")
         
         Alamofire.request(url!).responseJSON { (response) in
             
@@ -35,19 +35,19 @@ class GetAPIData {
         }
     }
     
-    func updateResult(_ data: Data?) -> [Show]{
-        var channelsArray = [Show]()
+    func updateResult(_ data: Data?) -> Channel{
+        var channels = Channel()
 
         do {
             let decoder = JSONDecoder()
             if let data = data {
-                channelsArray = try decoder.decode([Show].self, from: data)
+                channels = try decoder.decode(Channel.self, from: data)
             } else { print("no data retrieved") }
         } catch {
             print("Error while parsing json: \(error)")
         }
         
-        return channelsArray
+        return channels
     }
 
 }
