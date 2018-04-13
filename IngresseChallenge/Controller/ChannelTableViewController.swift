@@ -33,6 +33,7 @@ class ChannelTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (searchBar.text?.isEmpty)! {
+            channelsArray = []
             return 1
         }
         return channelsArray.count
@@ -43,7 +44,10 @@ class ChannelTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as? ChannelCell else { return UITableViewCell() }
 
         if (searchBar.text?.isEmpty)! {
+            cell.titleLabel.text = ""
             cell.genreLabel.text = "Looking for something? :)"
+            cell.posterImage.isHidden = true
+            cell.favoriteButton.isHidden = true
             tableView.allowsSelection = false
             return cell
         }
@@ -54,8 +58,11 @@ class ChannelTableViewController: UITableViewController {
         cell.genreLabel.text = genres
 
         let imageURL = URL(string: channelsArray[indexPath.row].image.medium)
+        cell.posterImage.isHidden = false
         cell.posterImage.af_setImage(withURL: imageURL!)
-        
+
+        cell.favoriteButton.isHidden = false
+
         return cell
     }
 

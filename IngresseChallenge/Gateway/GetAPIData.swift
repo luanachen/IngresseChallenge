@@ -16,9 +16,9 @@ class GetAPIData {
         
         var channelsArray = Channel()
 
-        let url = URL(string: "http://api.tvmaze.com/search/shows?q=\(name)")
+        guard let url = URL(string: "http://api.tvmaze.com/search/shows?q=\(name)") else { return }
         
-        Alamofire.request(url!).responseJSON { (response) in
+        Alamofire.request(url).responseJSON { (response) in
             
             if response.result.isSuccess {
                 
