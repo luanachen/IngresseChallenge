@@ -24,8 +24,10 @@ struct Show: Codable {
     let image: Image?
     let summary: String?
 
+    let isFavorite: Bool?
+
     enum CodingKeys: String, CodingKey {
-        case id, name, genres, premiered, image, summary
+        case id, name, genres, premiered, image, summary, isFavorite
     }
 }
 

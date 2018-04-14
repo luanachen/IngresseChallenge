@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1811A243207EE71F008CBE64 /* empty_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 1811A242207EE71F008CBE64 /* empty_star.png */; };
 		1811A245207EE729008CBE64 /* filled_star.png in Resources */ = {isa = PBXBuildFile; fileRef = 1811A244207EE729008CBE64 /* filled_star.png */; };
-		187C65912080F04500AAA3CD /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187C65902080F04500AAA3CD /* Favorite.swift */; };
 		187C6594208125DE00AAA3CD /* movie_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 187C6593208125DE00AAA3CD /* movie_placeholder.png */; };
 		18E9BFB4207E7D6C00A17220 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E9BFB3207E7D6C00A17220 /* AppDelegate.swift */; };
 		18E9BFB9207E7D6C00A17220 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18E9BFB7207E7D6C00A17220 /* Main.storyboard */; };
@@ -28,7 +27,6 @@
 		0AAE818EE03FBC61436D56D4 /* Pods-IngresseChallenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IngresseChallenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-IngresseChallenge/Pods-IngresseChallenge.release.xcconfig"; sourceTree = "<group>"; };
 		1811A242207EE71F008CBE64 /* empty_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty_star.png; sourceTree = "<group>"; };
 		1811A244207EE729008CBE64 /* filled_star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filled_star.png; sourceTree = "<group>"; };
-		187C65902080F04500AAA3CD /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		187C6593208125DE00AAA3CD /* movie_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movie_placeholder.png; sourceTree = "<group>"; };
 		18E9BFB0207E7D6C00A17220 /* IngresseChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IngresseChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E9BFB3207E7D6C00A17220 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,14 +64,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		187C65922080F0B700AAA3CD /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				187C65902080F04500AAA3CD /* Favorite.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		18E9BFA7207E7D6C00A17220 = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +87,6 @@
 			children = (
 				18E9BFD6207E8D7D00A17220 /* Model */,
 				18E9BFDB207E8FCB00A17220 /* Gateway */,
-				187C65922080F0B700AAA3CD /* Helpers */,
 				18E9BFCC207E7EAA00A17220 /* Controller */,
 				18E9BFCB207E7EA300A17220 /* View */,
 				18E9BFCD207E7EBB00A17220 /* Support Files */,
@@ -298,7 +287,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				18E9BFC6207E7E4600A17220 /* ChannelTableViewController.swift in Sources */,
-				187C65912080F04500AAA3CD /* Favorite.swift in Sources */,
 				18E9BFD5207E8C1800A17220 /* Channel.swift in Sources */,
 				18E9BFD0207E7F6700A17220 /* ChannelCell.swift in Sources */,
 				18E9BFDA207E8FC600A17220 /* GetAPIData.swift in Sources */,

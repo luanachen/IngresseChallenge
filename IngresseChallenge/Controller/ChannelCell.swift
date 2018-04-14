@@ -10,7 +10,10 @@ import UIKit
 
 class ChannelCell: UITableViewCell {
 
-    let favorite = Favorite()
+    var favID = 0
+    let userDefaults = UserDefaults.standard
+
+    var index: IndexPath!
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
@@ -20,16 +23,24 @@ class ChannelCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
+        updateSelection()
     }
 
     @IBAction func favoriteButton(_ sender: UIButton) {
+        favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
+        favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal	)
 
+        sender.isSelected = !sender.isSelected
+        let key = "\(favID)"
+        userDefaults.set(sender.isSelected, forKey: key)
+        userDefaults.synchronize()
     }
 
+    func updateSelection() {
+        let key = "\(favID)"
+        let isFav = userDefaults.bool(forKey: key)
+        favoriteButton.isSelected = isFav
+    }
 
+    
 }

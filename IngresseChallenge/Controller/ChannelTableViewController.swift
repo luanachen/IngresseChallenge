@@ -13,6 +13,9 @@ class ChannelTableViewController: UITableViewController {
 
     // MARK: - Properties
     var channelsArray: [Show]?
+    let favoriteKey = "favorites"
+    var favorites = [Int]()
+    let userDefaults = UserDefaults.standard
 
     // MARK: - Outlets
     @IBOutlet var searchBar: UISearchBar!
@@ -54,11 +57,10 @@ class ChannelTableViewController: UITableViewController {
                 }
             }
             cell.posterImage.isHidden = false
-
             cell.favoriteButton.isHidden = false
 
-            let id = channel.id
-            cell.favoriteButton.setImage(Favorite().recoverFavorite().contains(id) ? #imageLiteral(resourceName: "filled_star.png") : #imageLiteral(resourceName: "empty_star.png"), for: .normal)
+            cell.favID = channel.id
+            cell.updateSelection()
 
             return cell
         }
@@ -72,8 +74,8 @@ class ChannelTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let destinationVC = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as! DetailsViewController
-        guard let channels = self.channelsArray?[indexPath.row] else { return }
-        destinationVC.selectedChannel = channels
+        guard let channel = self.channelsArray?[indexPath.row] else { return }
+        destinationVC.selectedChannel = channel
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
 
@@ -101,5 +103,12 @@ extension ChannelTableViewController: UISearchBarDelegate {
         }
     }
 
-
 }
+
+
+
+
+
+
+
+
