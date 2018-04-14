@@ -11,6 +11,8 @@ import UIKit
 class DetailsViewController: UIViewController {
 
     var selectedChannel: Show?
+    var userDefaults = UserDefaults()
+    var favID = 0
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -36,6 +38,12 @@ class DetailsViewController: UIViewController {
                 imageView.af_setImage(withURL: imageURL)
             }
         }
+
+        guard let favID = selectedChannel?.id else { return }
+
+        favoriteButton.isSelected = userDefaults.bool(forKey: "\(favID)")
+        favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
+        favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,6 +51,17 @@ class DetailsViewController: UIViewController {
             selectedChannel = nil
         }
     }
+
+    @IBAction func favoriteButton(_ sender: UIButton) {
+
+        favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
+        favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal    )
+
+        sender.isSelected = !sender.isSelected
+        userDefaults.set(sender.isSelected, forKey: "\(favID)")
+        userDefaults.synchronize()
+    }
+
 
 }
 // MARK: Extension - String

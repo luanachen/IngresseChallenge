@@ -87,6 +87,9 @@
                                 <rect key="frame" x="306" y="279" width="53" height="47"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="empty_star"/>
+                                <connections>
+                                    <action selector="favoriteButton:" destination="5K9-4g-2V6" eventType="touchUpInside" id="wfI-Sf-oRt"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qc0-dx-Yfx">
                                 <rect key="frame" x="254" y="347" width="105" height="50"/>
