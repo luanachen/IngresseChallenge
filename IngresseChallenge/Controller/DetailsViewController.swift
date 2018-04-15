@@ -10,10 +10,12 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    var selectedChannel: Show?
-    var userDefaults = UserDefaults()
+    // MARK: - Properties
     var favID = 0
+    var userDefaults = UserDefaults.standard
+    var selectedChannel: Show?
 
+    // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
@@ -21,8 +23,11 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var releaseDayLabel: UILabel!
     @IBOutlet weak var favoriteButton: UIButton!
 
+    // MARK: - View Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.navigationItem.title = selectedChannel?.name
 
         self.title = selectedChannel?.name
         self.titleLabel.text = selectedChannel?.name
@@ -39,7 +44,8 @@ class DetailsViewController: UIViewController {
             }
         }
 
-        guard let favID = selectedChannel?.id else { return }
+        guard let id = selectedChannel?.id else { return }
+        favID = id
 
         favoriteButton.isSelected = userDefaults.bool(forKey: "\(favID)")
         favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
@@ -52,10 +58,11 @@ class DetailsViewController: UIViewController {
         }
     }
 
+    // MARK: - Action
     @IBAction func favoriteButton(_ sender: UIButton) {
 
         favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
-        favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal    )
+        favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal)
 
         sender.isSelected = !sender.isSelected
         userDefaults.set(sender.isSelected, forKey: "\(favID)")

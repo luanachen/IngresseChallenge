@@ -23,10 +23,13 @@ class ChannelTableViewController: UITableViewController {
     // MARK: - View Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
-
         tableView.register(UINib(nibName: "ChannelCell", bundle: nil), forCellReuseIdentifier: "customCell")
-
         searchBar.delegate = self
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -58,9 +61,11 @@ class ChannelTableViewController: UITableViewController {
             }
             cell.posterImage.isHidden = false
             cell.favoriteButton.isHidden = false
-
+            
             cell.favID = channel.id
             cell.updateSelection()
+            cell.favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
+            cell.favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal)
 
             return cell
         }
@@ -80,6 +85,8 @@ class ChannelTableViewController: UITableViewController {
     }
 
 }
+
+// MARK: - UISearchBarDelegate
 extension ChannelTableViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
