@@ -20,7 +20,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="325" height="120.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rick stein blablabla" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cze-aG-vtQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cze-aG-vtQ">
                         <rect key="frame" x="16" y="11" width="190" height="26"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="190" id="XgE-pb-lNA"/>
@@ -44,7 +44,7 @@
                             <action selector="favoriteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="pN3-aR-tiw"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="drama" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i42-oi-3g3">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i42-oi-3g3">
                         <rect key="frame" x="16" y="45" width="190" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="01J-KG-hFk"/>

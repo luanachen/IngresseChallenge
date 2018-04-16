@@ -32,6 +32,7 @@ class DetailsViewController: UIViewController {
         self.title = selectedChannel?.name
         self.titleLabel.text = selectedChannel?.name
         self.genreLabel.text =  selectedChannel?.genres?.compactMap{$0}.joined(separator: " | ")
+
         self.releaseDayLabel.text = selectedChannel?.premiered
 
         let synopsis = selectedChannel?.summary
