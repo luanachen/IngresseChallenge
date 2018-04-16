@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F2EB4FE054101E95495D9E5DDACBDCD4"
+               BlueprintIdentifier = "6050145865A8A218842F2C59592B448F"
                BuildableName = "Pods_IngresseChallenge.framework"
                BlueprintName = "Pods-IngresseChallenge"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F2EB4FE054101E95495D9E5DDACBDCD4"
+            BlueprintIdentifier = "6050145865A8A218842F2C59592B448F"
             BuildableName = "Pods_IngresseChallenge.framework"
             BlueprintName = "Pods-IngresseChallenge"
             ReferencedContainer = "container:Pods.xcodeproj">

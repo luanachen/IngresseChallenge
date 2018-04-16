@@ -37,7 +37,6 @@ class DetailsViewController: UIViewController {
         let synopsis = selectedChannel?.summary
         self.synopsisTextField.text = synopsis?.removeHtmlFromString(inPutString: synopsis!)
 
-
         if let imageString = selectedChannel?.image?.original {
             if let imageURL = URL(string: imageString) {
                 imageView.af_setImage(withURL: imageURL)
@@ -68,7 +67,6 @@ class DetailsViewController: UIViewController {
         userDefaults.set(sender.isSelected, forKey: "\(favID)")
         userDefaults.synchronize()
     }
-
 
 }
 // MARK: Extension - String

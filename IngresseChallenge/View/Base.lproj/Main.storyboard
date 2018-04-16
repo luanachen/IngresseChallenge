@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Channels-->
+        <!--Looking for your show?-->
         <scene sceneID="QZS-2a-JGb">
             <objects>
                 <tableViewController id="kh4-ph-uqW" customClass="ChannelTableViewController" customModule="IngresseChallenge" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,7 +38,7 @@
                             <outlet property="delegate" destination="kh4-ph-uqW" id="Kac-Qq-Lrc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Channels" id="ZB4-2u-csy">
+                    <navigationItem key="navigationItem" title="Looking for your show?" id="ZB4-2u-csy">
                         <barButtonItem key="backBarButtonItem" title=" " id="Cmd-YT-H9Q"/>
                     </navigationItem>
                     <connections>

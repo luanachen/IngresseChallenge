@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import SVProgressHUD
 
 class ChannelTableViewController: UITableViewController {
 
@@ -100,14 +101,16 @@ extension ChannelTableViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 
+        SVProgressHUD.show()
         if let text = searchBar.text {
             let text = text.replacingOccurrences(of: " ", with: "+")
-            GetAPIData().fetchChannels(by: text) { (channels) in
-                self.channelsArray = channels.compactMap { $0.show }
-            }
-            tableView.allowsSelection = true
-            tableView.reloadData()
-        }
+                GetAPIData().fetchChannels(by: text) { (channels) in
+                    self.channelsArray = channels.compactMap { $0.show }
+                        self.tableView.reloadData()
+                        self.tableView.allowsSelection = true
+                    }
+                    SVProgressHUD.dismiss()
+                }
     }
 
 }
