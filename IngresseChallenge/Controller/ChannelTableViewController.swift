@@ -58,7 +58,7 @@ class ChannelTableViewController: UITableViewController {
                 if let imageURL = URL(string: imageString) {
                     cell.posterImage.af_setImage(withURL: imageURL)
                 } else {
-                    cell.posterImage.image = #imageLiteral(resourceName: "movie_placeholder.png")
+                    cell.posterImage.image = UIImage(named: "movie_placeholder")
                 }
             }
             cell.posterImage.isHidden = false
@@ -103,7 +103,7 @@ extension ChannelTableViewController: UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-
+        searchBar.resignFirstResponder()
         SVProgressHUD.show()
         if let text = searchBar.text {
             let text = text.replacingOccurrences(of: " ", with: "+")
