@@ -31,7 +31,7 @@ class DetailsViewController: UIViewController {
 
         self.title = selectedChannel?.name
         self.titleLabel.text = selectedChannel?.name
-        self.genreLabel.text =  selectedChannel?.genres?.compactMap{$0}.joined(separator: ", ")
+        self.genreLabel.text =  selectedChannel?.genres?.compactMap{$0}.joined(separator: " | ")
         self.releaseDayLabel.text = selectedChannel?.premiered
 
         let synopsis = selectedChannel?.summary
@@ -47,8 +47,10 @@ class DetailsViewController: UIViewController {
         favID = id
 
         favoriteButton.isSelected = userDefaults.bool(forKey: "\(favID)")
+
         favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
-        favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal)
+        let tintedStar = UIImage(named: "empty_star")?.tinted(with: .lightGray)
+        favoriteButton.setImage(tintedStar, for: .normal)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -61,7 +63,8 @@ class DetailsViewController: UIViewController {
     @IBAction func favoriteButton(_ sender: UIButton) {
 
         favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
-        favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal)
+        let tintedStar = UIImage(named: "empty_star")?.tinted(with: .lightGray)
+        favoriteButton.setImage(tintedStar, for: .normal)
 
         sender.isSelected = !sender.isSelected
         userDefaults.set(sender.isSelected, forKey: "\(favID)")
@@ -76,3 +79,4 @@ extension String{
         return inPutString.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }
 }
+

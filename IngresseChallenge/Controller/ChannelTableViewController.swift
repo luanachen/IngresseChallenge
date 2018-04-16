@@ -24,6 +24,7 @@ class ChannelTableViewController: UITableViewController {
     // MARK: - View Cicle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.backBarButtonItem?.tintColor = UIColor.black
         tableView.register(UINib(nibName: "ChannelCell", bundle: nil), forCellReuseIdentifier: "customCell")
         searchBar.delegate = self
     }
@@ -50,7 +51,7 @@ class ChannelTableViewController: UITableViewController {
 
             cell.titleLabel.text = channel.name
 
-            let genres = channel.genres?.compactMap{$0}.joined(separator: ", ")
+            let genres = channel.genres?.compactMap{$0}.joined(separator: " | ")
             cell.genreLabel.text = genres
 
             if let imageString = channel.image?.original {
@@ -66,7 +67,9 @@ class ChannelTableViewController: UITableViewController {
             cell.favID = channel.id
             cell.updateSelection()
             cell.favoriteButton.setImage(#imageLiteral(resourceName: "filled_star"), for: .selected)
-            cell.favoriteButton.setImage(#imageLiteral(resourceName: "empty_star"), for: .normal)
+
+            let tintedStar = UIImage(named: "empty_star")?.tinted(with: .lightGray)
+            cell.favoriteButton.setImage(tintedStar, for: .normal)
 
             return cell
         }
@@ -104,15 +107,26 @@ extension ChannelTableViewController: UISearchBarDelegate {
         SVProgressHUD.show()
         if let text = searchBar.text {
             let text = text.replacingOccurrences(of: " ", with: "+")
-                GetAPIData().fetchChannels(by: text) { (channels) in
-                    self.channelsArray = channels.compactMap { $0.show }
-                        self.tableView.reloadData()
-                        self.tableView.allowsSelection = true
-                    }
-                    SVProgressHUD.dismiss()
-                }
+            GetAPIData().fetchChannels(by: text) { (channels) in
+                self.channelsArray = channels.compactMap { $0.show }
+                self.tableView.reloadData()
+                self.tableView.allowsSelection = true
+            }
+            SVProgressHUD.dismiss()
+        }
     }
 
+}
+// MARK: Extension - UIImage
+extension UIImage {
+    func tinted(with color: UIColor) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer { UIGraphicsEndImageContext() }
+        color.set()
+        withRenderingMode(.alwaysTemplate)
+            .draw(in: CGRect(origin: .zero, size: size))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
 }
 
 
